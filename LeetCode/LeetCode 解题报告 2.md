@@ -18,6 +18,29 @@ Explanation: 342 + 465 = 807.
 
 有点像大数据加减的细节。也就很简单。直接模拟实现 判断是否进位，最后输出。主要难点在于指针的处理
 
+#### 解题代码(javascript)
+
+```javascript
+var addTwoNumbers = function(l1, l2) {
+    var head=new ListNode(0);
+    let cur=head;
+    var sum,add=0;
+    while( l1 || l2 || add){
+        if (!l1){ v1=0} else v1=l1.val;
+         if (!l2) {v2=0} else v2=l2.val;
+        sum=v1+v2+add;
+        add=Math.floor(sum /10);
+        cur.next=new ListNode(sum %10) ;
+        cur=cur.next;
+        if (l1) l1=l1.next;
+        if (l2) l2=l2.next;
+    }
+    return head.next
+};
+```
+
+
+
 #### 解题代码(java)
 
 ```java
@@ -60,8 +83,6 @@ public class Solution {
     }
 }
 ```
-
-#### 解题代码(javascript)
 
 #### 优化思路
 
